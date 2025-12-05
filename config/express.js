@@ -1,12 +1,13 @@
-const express = require("express");
+import express from "express";
 const app = express();
-require("./database");
-const bodyParser = require("body-parser");
-require("dotenv").config();
-const api = require("../api/index");
-const logger = require("../logger");
+import mongoose from "./database.js";
+import { json } from "express";
+import dotenv from "dotenv";
+import router from "../routes/index.js";
+import logger from "../logger.js";
+dotenv.config();
 
-app.use(bodyParser.json());
+app.use(json());
 //app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get("/", (req, res) => {
@@ -16,7 +17,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.use("/api", api);
+app.use("/api", router);
 
 app.use((req, res, next) => {
   if (process.env.NODE_ENV !== "production") {
@@ -27,8 +28,5 @@ app.use((req, res, next) => {
   next();
 });
 
-const port = process.env.PORT || 3000;
-module.exports = {
-  app,
-  port,
-};
+export const port = process.env.PORT || 3000;
+export default app;

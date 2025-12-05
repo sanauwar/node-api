@@ -1,0 +1,47 @@
+### Homepage
+GET http://localhost:3000/
+Accept: application/json
+
+# ###
+
+### Create a new user
+POST http://localhost:3000/api/users/register
+Content-Type: application/json
+
+{
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "john@yopmail.com",
+    "password": "password123"
+}
+
+
+### Login a user
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+
+
+{
+    "email": "john@yopmail.com",
+    "password": "password123"
+}
+
+### GET all users
+# GET http://localhost:3000/api/users
+# Accept: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Y2IyZjQwMTc1NTcyMDFkM2NkMThjOCIsImlhdCI6MTc1ODE0NzAxNiwiZXhwIjoxNzU4MTUwNjE2fQ.Dp78eq2FfWPtedPr-XSl12vMYM_eo8ppHvv0oHIfpgk
+
+### Create a new blog post
+POST http://localhost:3000/api/blog
+Content-Type: application/json
+
+{
+    "title": "My Second Blog Post",
+    "content": "This is the content of my second blog post.",
+    "author": "68cb2f4017557201d3cd18c8"
+}   
+  
+### Get blog by user ID
+GET http://localhost:3000/api/blog/68cb2f4017557201d3cd18c8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Y2IyZjQwMTc1NTcyMDFkM2NkMThjOCIsImlhdCI6MTc2NDk2NjA2OSwiZXhwIjoxNzY0OTY5NjY5fQ.1q1kFdS44mDUddBaVlsRoMAJu2UWo_zT9YtfC8qhu1c

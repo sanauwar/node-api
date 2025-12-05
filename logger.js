@@ -1,14 +1,18 @@
-const winston = require("winston");
-const { combine, timestamp, json } = winston.format;
+import {
+  format as _format,
+  createLogger,
+  transports as _transports,
+} from "winston";
+const { combine, timestamp, json } = _format;
 
-const logger = winston.createLogger({
+const logger = createLogger({
   level: process.env.LOG_LEVEL || "info",
   format: combine(timestamp(), json()),
   transports: [
-    new winston.transports.File({
+    new _transports.File({
       filename: "error.log",
     }),
   ],
 });
 
-module.exports = logger;
+export default logger;
